@@ -1,0 +1,42 @@
+<html>
+<head></head>
+<body>
+<button name='button'>Click Me</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    var customObject = {
+        name:'California, Eureka',
+        onClick:function(){
+            console.log("I've been clicked");
+            console.log(this.name);
+        }
+    }
+
+    // // our behavior on click.
+    // $('button').click(customObject.onClick);
+
+    // // Modified Button
+    // $('button').click(customObject.onClick.bind(customObject));
+
+    // //Modified Again
+    // var newObject = {
+    //     name:"West Virginia,  Montani semper liberi"
+    // }
+    // // our behavior on click.
+    // $('button').click(customObject.onClick.bind(newObject));
+
+    // our test object
+    var customObject = {
+    name:'California, Eureka',
+    onClick:function(myParam){
+        console.log("I've been clicked");
+        console.log(myParam, "I've been passed by bind");
+        console.log(this.name);
+    }
+    }
+    // our behavior on click.
+    $('button').click(customObject.onClick.bind(customObject,"Bind this argument!"));
+    
+    </script>
+</body>
+</html>
