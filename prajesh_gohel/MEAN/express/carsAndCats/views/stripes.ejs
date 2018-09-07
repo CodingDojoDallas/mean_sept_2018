@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cat Info</title>
+  </head>
+  <body>
+    <% for (var i in stripes) { %>
+      <h1>Displaying information for <%= stripes[i].name %></h1>
+      <img src="images/cat1.png" alt="A cat">
+      <hr>
+      <h4>Favorite food: <%= stripes[i].food %></h4>
+      <h4>Age: <%= stripes[i].age %></h4>
+      <h4>Sleeping spots:</h4>
+      <p><%= stripes[i].sleeps[0] %></p>
+      <p><%= stripes[i].sleeps[1] %></p>
+    <% } %>
+  </body>
+</html>
