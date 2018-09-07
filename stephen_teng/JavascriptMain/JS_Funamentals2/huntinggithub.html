@@ -1,0 +1,20 @@
+<html>
+<head></head>
+<body>
+    <div id="viewport"></div>
+    <button type="button">Click Me!</button>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        // assuming you have jQuery
+        $(document).on('click', 'button', function(){
+            $.get("https://api.github.com/users/texteng", displayName)
+        });
+
+        function displayName(data) {
+            $('body').append("<p>"+data.login+"</p>");
+        }
+        
+    </script>
+</body>
+</html>

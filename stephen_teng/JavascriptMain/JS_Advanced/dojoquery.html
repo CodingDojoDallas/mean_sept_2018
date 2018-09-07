@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DojoQuery</title>
+</head>
+<body>
+    <button id = "Button1" value = "I am a button">Howdy!</button>
+
+
+<script>
+
+function $Dojo(element){
+    this.HTMLElement = document.getElementById(element);
+    this.click = function(param){
+        HTMLElement.addEventListener("click", param)
+    };
+    this.hover = function(paramover, paramleave){
+        HTMLElement.addEventListener("mouseover", paramover)
+        HTMLElement.addEventListener("mouseout", paramleave)
+    };
+    return this;
+}
+$Dojo("Button1").click(function() { console.log("The button was clicked!") });
+$Dojo("Button1").hover(function() { console.log("The Mouse is over the button!") }, function() { console.log("The Mouse is left the button!")});
+
+</script>
+</body>
+</html>

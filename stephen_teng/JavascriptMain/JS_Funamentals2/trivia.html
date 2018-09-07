@@ -1,0 +1,145 @@
+<html>
+<head>
+
+    <title>Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .answerchoices{
+            height: 60px;
+            width: 200px;
+            white-space: normal;
+            margin: 5px;
+        }
+
+        .hide{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div class= "container-flex">
+        <div class= "row">
+            <div class ="col-md-9">
+                <h1>Trivia Game</h1>
+            </div>
+            <div id = "scorebox" class ="col-md-3">
+            </div>
+        </div>
+        <div class= "row">
+            <div class = "col" id= "mainbody">
+                `<table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Difficulty</th>
+                        <th scope="col">Answer Question</th>
+                        <th scope="col">Questions</th>
+                        <th scope="col">Answer Choices</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>`
+            </div>
+        </div>
+
+
+    </div>
+    <!-- <button type="button">Click Me!</button> -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+        var score = 0;
+        // assuming you have jQuery
+        $(document).ready(function(){
+            $.get("https://opentdb.com/api.php?amount=10&type=multiple", displayTrivia)
+        });
+        
+        function displayTrivia(data) {
+            // console.log(data)
+            // let tablebody = `<table class="table">\n
+            //         <thead>\n
+            //             <tr>\n
+            //             <th scope="col">Questions</th>\n
+            //             <!-- <th scope="col">Category</th>\n
+            //             <th scope="col">Difficulty</th> -->\n
+            //             <th scope="col">Answer Choices</th>\n
+            //             </tr>\n
+            //         </thead>\n
+            //         <tbody>\n
+            //         </tbody>\n
+            //     </table>\n`
+            // $('#mainbody').html(tablebody);
+            let questions = data.results;
+            let output = "";
+            let categoryArray =[];
+            for(singlequestion in questions){
+                if($.inArray(questions[singlequestion].category, categoryArray) == -1){
+                    categoryArray.push(questions[singlequestion].category);
+                } 
+            }
+            console.log(categoryArray);
+            // for(var i = 0, l = categoryArray.length; i < l; i++){
+            //     console.log(categoryArray[i]);
+            // }
+            for(var i = 0, l = categoryArray.length; i < l; i++){
+                output += `<tr><td colspan=4><h2>${categoryArray[i]}</h2></td></tr>`
+                for(singlequestion in questions){
+                    
+                    if(questions[singlequestion].category == categoryArray[i]){
+                        output += "<tr>\n";
+                            output += `<td>\n${questions[singlequestion].difficulty}</td>\n`;
+                            output += `<td>\n<button type="button" class="${singlequestion} btn btn-success startquestion startquestion${singlequestion}">Answer Question</button></td>\n`;
+                            output += `<td id = "questionbox${singlequestion}">\n<div class="${singlequestion} hide">${questions[singlequestion].question}<div class=""</td>\n`;
+                            // output += "<td>\n"+questions[singlequestion].category+"</td>\n";
+                            output += "<td>\n"; 
+                            output += `<button class="${singlequestion} hide btn btn-primary answerchoices" value="correct">${questions[singlequestion].correct_answer}</button>&nbsp`
+                                var count = 1;
+                            for(wronganswerchoice in questions[singlequestion].incorrect_answers){
+                                count++;
+                                if (count == 3){
+                                    output +="<br>";
+                                }
+                                output += `<button class="${singlequestion} hide btn btn-primary answerchoices" value="wrong">${questions[singlequestion].incorrect_answers[wronganswerchoice]}</button>&nbsp`
+                            }
+
+                            output += "</td>";
+                        output += "</tr>";
+                    }
+                }
+            }
+
+
+            // console.log(output);
+            $('tbody').append(output);
+
+            $(document).on('click', '.answer', function(){
+                questionID = $(this).attr("class")[0]
+                if($(this).val() == "correct"){
+                    score += 100;
+                }
+                else{
+                    score -= 30;
+                }
+                $( "."+ questionID ).addClass( "disabled" );
+                $( "."+ questionID ).removeClass( "answer" );
+                $( "."+ questionID ).removeClass( "startquestion" );
+                $( this ).addClass( "btn-warning" );
+                $( this ).removeClass( "btn-primary" );
+                $('#questionbox' + questionID).append(`<h4>${questions[questionID].correct_answer}</h4>`);
+                $('#scorebox').html(`<h1>Score: ${score}</h1>`);
+            });
+
+            $(document).on('click', '.startquestion', function(){
+                questionID = $(this).attr("class")[0]
+                console.log(questionID);
+                $( "."+ questionID ).removeClass( "hide" );
+                $( "."+ questionID ).addClass( "answer" );
+                $( ".startquestion"+ questionID ).addClass( "hide" );
+            });
+        }
+        
+    </script>
+</body>
+</html>

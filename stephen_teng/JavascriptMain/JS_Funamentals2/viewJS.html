@@ -1,0 +1,21 @@
+<html>
+<head></head>
+<body>
+    <div id="viewport"></div>
+    <button type="button">Click Me!</button>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="huntinggithub.js"></script>
+    <script>
+        // assuming you have jQuery
+        $(document).ready(function(){
+            var favoritePokemon;
+            // the given link is for Bulbasaur's information
+            $.get("https://pokeapi.co/api/v2/pokemon/1/", function(data){ 
+                favoritePokemon = data.name;
+                console.log("Got my favorite Pokemon", favoritePokemon);      // Predict the output!
+            })
+        });
+    </script>
+</body>
+</html>

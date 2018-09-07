@@ -1,3 +1,0 @@
-Animals: https://opentdb.com/api.php?amount=3&category=27&difficulty=medium&type=multiple
-Music: https://opentdb.com/api.php?amount=3&category=12&difficulty=medium&type=boolean
-Anime: https://opentdb.com/api.php?amount=3&category=31&difficulty=hard&type=multiple
