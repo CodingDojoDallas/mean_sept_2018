@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Basic Mongo App</title>
+  </head>
+  <body>
+    <form action="/users" method="post">
+      <input type="text" name="name" placeholder="Name">
+      <input type="text" name="age" placeholder="Age">
+      <button type="submit">Submit</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (var i in allUsers) { %>
+          <tr>
+            <td><%= allUsers[i].name %></td>
+            <td><%= allUsers[i].age %></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>
