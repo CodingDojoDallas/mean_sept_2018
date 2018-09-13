@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Message Board (for newbies)</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <body>
+    <% if (messages.create) { %>
+      <% for (var i of messages.create) { %>
+        <p class="alert alert-danger"><%= i %></p>
+      <% } %>
+    <% } %>
+    <nav class="navbar navbar-dark bg-dark mb-4">
+      <h1 class="navbar-brand">The Dojo Message Board</h1>
+    </nav>
+    <form class="col-4 mb-4" action="/messages" method="post">
+      <div class="form-group">
+        <input type="text" name="name" class="form-control" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <textarea name="message" rows="4" class="form-control" placeholder="Message"></textarea>
+      </div>
+      <button class="btn btn-primary ml-auto" type="submit">Post message</button>
+    </form>
+    <hr>
+    <div class="container-fluid">
+      <% for (var i of allMessages) { %>
+        <h3>Name: <%= i.name %></h3>
+        <h3 class="mb-3">Message: <%= i.message %></h3>
+        <div class="offset-1">
+          <% for (var j of i.comments) { %>
+            <p>Name: <%= j.name %></p>
+            <p>Comment: <%= j.comment %></p>
+          <% } %>
+          <form class="col-4 mb-4" action="/comments/<%= i.id %>" method="post">
+            <div class="form-group">
+              <input type="text" name="name" class="form-control" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <textarea name="comment" rows="4" class="form-control" placeholder="Comment"></textarea>
+            </div>
+            <button class="btn btn-primary ml-auto" type="submit">Post comment</button>
+          </form>
+        </div>
+        <hr>
+      <% } %>
+    </div>
+    <script type="text/javascript" src="/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"></script>
+  </body>
+</html>

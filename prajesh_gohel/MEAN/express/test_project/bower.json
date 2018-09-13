@@ -1,0 +1,22 @@
+{
+  "name": "test_project",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "ThePopwolf <prajeshgohel@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ThePopwolf/mean_sept_2018",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.1.3"
+  }
+}

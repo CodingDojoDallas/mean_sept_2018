@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login or Register</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="navbar mb-5">
+      <h2>Please <span class="text-success">Login</span> or <span class="text-primary">Register</span> Here</h2>
+    </div>
+    <div class="container">
+      <div class="row">
+        <form action="/verify/" method="post">
+          <h4>Login:</h4>
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="emaillog">Email:</label>
+              <input class="form-control" type="email" id="emaillog" name="email">
+            </div>
+            <div class="form-group col-6">
+              <label for="passlog">Password:</label>
+              <input class="form-control" type="password" id="passlog" name="passlog">
+            </div>
+          </div>
+          <button class="btn btn-success" type="submit">Login</button>
+        </form>
+        <form class="offset-3" action="/register/" method="post">
+          <h4>Registration:</h4>
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="first_name">First Name:</label>
+              <input class="form-control" type="text" id="first_name "name="first_name" placeholder="First Name">
+              <div class="invalid-feedback">
+              </div>
+            </div>
+            <div class="form-group col-6">
+              <label for="last_name">Last Name:</label>
+              <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="birthday">Date of Birth:</label>
+              <input class="form-control" type="date" name="birthday" id="birthday">
+            </div>
+            <div class="form-group col-6">
+              <label for="email">Email:</label>
+              <input class="form-control" type="email" id="email" name="email" placeholder="123@email.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="pass">Password:</label>
+              <input class="form-control" type="password" id="pass" name="password">
+            </div>
+            <div class="form-group col-6">
+              <label for="pass_confirm">Confirm Password:</label>
+              <input class="form-control" type="password" id="pass_confirm" name="pass_confirm">
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+    <script type="text/javascript" src="/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"></script>
+  </body>
+</html>
