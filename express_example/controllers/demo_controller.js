@@ -2,7 +2,7 @@
 // your server will go.
 module.exports = {
 
-  home_function: function(req, res){
+  this.home_function: function(req, res){
     // A dummy array of users.
     var users_array = [
         {name: "Michael", email: "michael@codingdojo.com"},
