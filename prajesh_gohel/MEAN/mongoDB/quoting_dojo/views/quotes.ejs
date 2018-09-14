@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>All Quotes</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mb-3">Here are the awesome quotes!</h1>
+      <% for (var i in quotes) { %>
+        <p>"<%= quotes[i].quote %>"</p>
+        <p class="offset-1 text-primary">-<%= quotes[i].name %> at <%= moment(quotes[i].createdAt).format('LLL') %></p>
+      <% } %>
+    </div>
+    <script type="text/javascript" src="/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"></script>
+  </body>
+</html>

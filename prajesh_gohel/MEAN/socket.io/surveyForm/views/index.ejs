@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Dojo Survey!</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="navbar justify-content-center bg-primary mb-3">
+      <h2 class="text-white">Dojo Survey</h2>
+    </div>
+    <form action="/" method="post">
+      <div class="container">
+        <div class="form-group row">
+          <label for="name" class="col-sm-2 col-form-label">Name: </label>
+          <div class="col-6 offset-4">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="location" class="col-sm-2 col-form-label">Dojo Location:</label>
+          <div class="col-6 offset-4">
+            <select class="custom-select form-control" id="location" name="location">
+              <option selected>Choose...</option>
+              <option value="San Jose">San Jose</option>
+              <option value="Dallas">Dallas</option>
+              <option value="Seattle">Seattle</option>
+              <option value="LA">LA</option>
+              <option value="Tyson Corners">Tyson Corners</option>
+              <option value="Chicago">Chicago</option>
+              <option value="Tulsa">Tulsa</option>
+              <option value="East Bay">East Bay</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="language" class="col-sm-2 col-form-label">Favorite Language:</label>
+          <div class="col-6 offset-4">
+            <select class="custom-select form-control" id="language" name="language">
+              <option selected>Choose...</option>
+              <option value="Python">Python</option>
+              <option value="Ruby">Ruby</option>
+              <option value="Java">Java</option>
+              <option value="Mean">Mean</option>
+              <option value="Swift">Swift</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="comment">Comment (required): </label>
+          <textarea name="comment" class="form-control" id="comment" rows="3" placeholder="Comment..."></textarea>
+        </div>
+        <div class="form-group row col-sm-10">
+        <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+        </div>
+      </div>
+    </form>
+    <script src="/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        var socket = io();
+        socket.on('hello', function(data){
+          console.log(data.msg);
+          socket.emit('thankyou', { msg: 'Thank you for connecting me! - Client' });
+        });
+      });
+    </script>
+  </body>
+</html>

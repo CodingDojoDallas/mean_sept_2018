@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>A view!</title>
+  </head>
+  <body>
+    <h2>Here are all the users:</h2>
+    <% for (var x in users) { %>
+      <h3>Name: <%= users[x].name %></h3>
+      <h3>Email: <%= users[x].email %></h3>
+      <hr>
+    <% } %>
+  </body>
+</html>
