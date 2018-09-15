@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>New</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <body>
+    <% JSON.stringify(messages) %>
+    <% if (messages.create) { %>
+      <% for (var i of messages.create) { %>
+        <p class="alert alert-danger"><%= i %></p>
+      <% } %>
+    <% } %>
+    <nav class="navbar navbar-dark mb-3 bg-dark">
+      <h1 class="navbar-brand">New Bird</h1>
+    </nav>
+    <form  action="/birds" method="post" class="col-4">
+      <div class="form-group">
+        <input class="form-control" type="text" name="first_name" placeholder="First Name">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="last_name" placeholder="Last Name">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="age" placeholder="Age">
+      </div>
+      <div class="form-row">
+        <a href="/" class="ml-auto btn btn-secondary">Back to Home</a>
+        <button type="submit" class="btn btn-primary">Create Bird</button>
+      </div>
+    </form>
+    <script type="text/javascript" src="/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"></script>
+  </body>
+</html>
