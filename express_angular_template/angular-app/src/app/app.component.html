@@ -1,0 +1,17 @@
+<style>
+  input {
+  display: block;
+}
+</style>
+<button (click)="showUsers()">Click here to get all the users.</button>
+
+<ul>
+  <li *ngFor='let user_for_li of users'>{{ user_for_li|json }}</li>
+</ul>
+
+User in app.component.ts - {{ user|json }} -
+<form (submit)=submitForm()>
+  Name: <input type="text" name="something" [(ngModel)]="user.name">
+  Email: <input type="text" name="somethingelse" [(ngModel)]="user.email">
+  <input type="submit" name="" value="Reset user variable in app.component.ts">
+</form>
