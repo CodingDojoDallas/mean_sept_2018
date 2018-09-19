@@ -28,7 +28,7 @@ module.exports = {
   products_create: (req, res) => {
     t = new Product();
 
-    // req.body contains the products passed in from createProducts in http.service.ts
+    // req.body contains the products passed in from createProducts in products/products.service.ts
     t.name = req.body.name;
     t.price = req.body.price;
     t.info = req.body.info;

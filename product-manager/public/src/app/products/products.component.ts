@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HttpService } from '../http.service';
+import { ProductsService } from '../products/products.service';
 
 @Component({
   selector: 'app-products',
@@ -11,7 +11,7 @@ export class ProductsComponent implements OnInit {
   products: Object[];
   selectedProduct: Object;
 
-  constructor(private _httpService: HttpService) {
+  constructor(private _ProductsService: ProductsService) {
     console.log('ProductsComponent.constructor');
   }
 
@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
     this.selectedProduct = {};
 
     // create observable and subscribe ($.get('/products', function(products_data) { ... })) in JQuery
-    let productObservable = this._httpService.products();
+    let productObservable = this._ProductsService.products();
     productObservable.subscribe(
       // this is the callback function
       (products_data: Object[]) => {

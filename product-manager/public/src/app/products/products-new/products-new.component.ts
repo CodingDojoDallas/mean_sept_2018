@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { HttpService } from '../../http.service';
+import { ProductsService } from '../../products/products.service';
 
 @Component({
   selector: 'app-products-new',
@@ -13,7 +13,7 @@ export class ProductsNewComponent implements OnInit {
   newProduct: Object;
   createErrors: Object;
 
-  constructor(private _httpService: HttpService, private _router: Router) { }
+  constructor(private _ProductsService: ProductsService, private _router: Router) { }
 
   ngOnInit() {
     this.resetNewProduct();
@@ -21,7 +21,7 @@ export class ProductsNewComponent implements OnInit {
 
   createProduct() {
     console.log('ProductsNewComponent.createProduct');
-    let createObservable = this._httpService.createProducts(this.newProduct);
+    let createObservable = this._ProductsService.createProducts(this.newProduct);
     createObservable.subscribe((data_from_create: any) => {
       console.log('data_from_create:', data_from_create);
       this.resetNewProduct();
