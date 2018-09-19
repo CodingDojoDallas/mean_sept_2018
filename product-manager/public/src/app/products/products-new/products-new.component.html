@@ -1,0 +1,31 @@
+<!--  This will only display if we've received validation errors from the server -->
+<p *ngIf="createErrors">These are errors: {{ createErrors|json }}</p>
+
+<!-- This is the variable that will be submitted, being modified in real time -->
+<p>Product being created: {{ newProduct|json }}</p>
+
+<!-- (submit) here is telling Angular what function to run in this component when the form is submitted -->
+<form (submit)="createProduct()" class="col-6">
+  <div class="form-group">
+    <label for="name">Product Name</label>
+    <!-- ngModel is what attaches the form input to the newProduct attribute in the products-new component -->
+    <input type="text" class="form-control" id="name" aria-describedby="product name" name="pname" placeholder="Enter product name" [(ngModel)]="newProduct.name">
+  </div>
+
+  <div class="form-group">
+    <label for="price">Product Price</label>
+    <input type="text" class="form-control" id="price" placeholder="Enter price of item" name="pprice" [(ngModel)]="newProduct.price">
+  </div>
+
+  <div class="form-group">
+    <label for="info">Product Information</label>
+    <textarea type="text" class="form-control" id="price" placeholder="Enter product information" name="pinfo" [(ngModel)]="newProduct.info"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="url">Product Image URL</label>
+    <input type="text" class="form-control" id="url" placeholder="Enter product image url" name="purl" [(ngModel)]="newProduct.url">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
