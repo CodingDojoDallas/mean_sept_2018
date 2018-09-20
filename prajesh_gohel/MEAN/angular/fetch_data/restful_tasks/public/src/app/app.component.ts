@@ -10,7 +10,6 @@ export class AppComponent implements OnInit {
   title = 'Restful Tasks API';
   titles: Object[];
   desc: any;
-  search: any;
   constructor (private _httpService: HttpService) {}
   ngOnInit() {
     this.titles = [];
@@ -21,7 +20,7 @@ export class AppComponent implements OnInit {
       this.titles = data.tasks;
     });
   }
-  showTaskDesc(id: any) {
+  taskToShow(id: any) {
     let observable = this._httpService.getOneTask(id);
     observable.subscribe((data: any) => {
       console.log(data)

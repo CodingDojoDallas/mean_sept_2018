@@ -1,18 +1,45 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="container">
-  <div style="text-align:center">
-    <h1 class="text-primary">
-      {{ title }}
-    </h1>
-    <button class="btn btn-success" type="button" (click)="showTaskTitles()">Get all Tasks</button>
+<div class="container-fluid">
+  <div class="col-4">
+    <h2>New Task</h2>
+    <form class="mb-5" (submit)="createTask()">
+      <p>{{ newTask | json }}</p>
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input class="form-control" type="text" id="title" name="newTask.title" [(ngModel)]="newTask.title">
+      </div>
+      <div class="form-group">
+        <label for="desc">Description:</label>
+        <input class="form-control" type="text" id="desc" name="newTask.description" [(ngModel)]="newTask.description">
+      </div>
+      <button type="submit" class="btn btn-primary">Create Task</button>
+    </form>
   </div>
-  <div class="row mb-3" *ngFor="let title of titles">
-    <p class="mr-auto">{{title.title}}</p>
-    <button class="btn btn-primary" type="button" (click)="showTaskDesc(title._id)">Show Description</button>
+  <div class="row">
+    <div class="col-6">
+      <h2>Task List</h2>
+      <div class="jumbotron" *ngFor="let task of tasks">
+        <h1 class="display-4">{{ task.title }}</h1>
+        <p class="lead">{{ task.description }}</p>
+        <div class="row">
+          <button class="btn btn-success btn-lg mr-3" type="button" (click)="getOneTask(task._id)">Edit</button>
+          <button class="btn btn-danger btn-lg" type="button" (click)="deleteTask(task._id)">Delete</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-6" *ngIf="this.task">
+      <h2>Edit Task</h2>
+      <form (submit)="editTask(this.task._id)">
+        <p>{{ this.task | json }}</p>
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input class="form-control" type="text" id="title" name="this.task.title" [value]="this.task.title" [(ngModel)]="this.task.title">
+        </div>
+        <div class="form-group">
+          <label for="desc">Description:</label>
+          <input class="form-control" type="text" id="desc" name="this.task.description" [value]="this.task.description" [(ngModel)]="this.task.description">
+        </div>
+        <button type="submit" class="btn btn-primary">Edit Task</button>
+      </form>
+    </div>
   </div>
-  <div id="root" class="mb-3" *ngIf="this.desc">
-    <p>{{this.desc.title}}</p>
-    <p>{{this.desc.description}}</p>
-  </div>
-  <input type="text" name="task" placeholder="Search Task" (keyup)="searchTask($event)">
 </div>

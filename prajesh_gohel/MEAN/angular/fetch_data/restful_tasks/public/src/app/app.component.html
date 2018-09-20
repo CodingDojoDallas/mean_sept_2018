@@ -8,11 +8,7 @@
   </div>
   <div class="row mb-3" *ngFor="let title of titles">
     <p class="mr-auto">{{title.title}}</p>
-    <button class="btn btn-primary" type="button" (click)="showTaskDesc(title._id)">Show Description</button>
+    <button class="btn btn-primary" type="button" (click)="taskToShow(title._id)">Show Description</button>
   </div>
-  <div id="root" class="mb-3" *ngIf="this.desc">
-    <p>{{this.desc.title}}</p>
-    <p>{{this.desc.description}}</p>
-  </div>
-  <input type="text" name="task" placeholder="Search Task" (keyup)="searchTask($event)">
+  <app-task *ngIf="desc" [taskToShow]="desc"></app-task>
 </div>

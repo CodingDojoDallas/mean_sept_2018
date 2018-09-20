@@ -5,7 +5,7 @@ const mongoose = require('mongoose'),
 module.exports = function(app) {
   app.get('/tasks', tasks.index);
   app.get('/tasks/:id', tasks.show);
-  app.post('/tasks', tasks.create);
+  app.post('/task', tasks.create);
   app.put('/tasks/edit/:id', tasks.update);
   app.delete('/tasks/:id', tasks.destroy);
 }
