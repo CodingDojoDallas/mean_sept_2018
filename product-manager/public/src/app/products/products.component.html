@@ -1,6 +1,13 @@
 <div class="container">
+  <router-outlet></router-outlet>
+  <!-- This is a nested component -->
+  <div class="row h-25 d-inline-block">
+    <!-- productToShow comes from the app-product component (child). selectedProduct comes from the products component (parent) -->
+    <app-products-info *ngIf="selectedProduct.name" [productToShow]="selectedProduct"></app-products-info>
+  </div>
 
   <div class="row">
+
     <!-- loop through all products returned from _http.get -->
     <div *ngFor="let p of products" class="align-items-center border" style="width: 18rem;">
 
@@ -24,12 +31,4 @@
       </div>
     </div>
   </div>
-
-  <!-- This is a nested component -->
-  <div class="row">
-    <!-- productToShow comes from the app-product component (child). selectedProduct comes from the products component (parent) -->
-    <app-products-info *ngIf="selectedProduct" [productToShow]="selectedProduct"></app-products-info>
-  </div>
-
 </div>
-<router-outlet></router-outlet>

@@ -5,11 +5,9 @@ module.exports = {
   products: (req, res) => {
     Product.find({}, (err, products) => {
       if (err) {
-        res.json({'message': 'error', 'errors': ['Couldnt Product.find()']});
+        err = err.errors
       }
-      else {
-        res.json(products);
-      }
+      res.json({'errors:': err, 'products':products});
     });
   },
 
@@ -17,11 +15,9 @@ module.exports = {
     id = req.params.id;
     Product.findById(id, (err, product) => {
       if (err) {
-        res.json({'err': 'Ooooopsies'});
+        err = err.errors;
       }
-      else {
-        res.json(product);
-      }
+      res.json({'errors:': err, 'product':product});
     });
   },
 
@@ -35,6 +31,9 @@ module.exports = {
     t.image_url = req.body.url;
 
     t.save((err) => {
+      if (err) {
+        err = err.errors;
+      }
       res.json({'errors': err, 'product': t});
     });
   }
