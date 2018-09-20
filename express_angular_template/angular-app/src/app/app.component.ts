@@ -23,7 +23,6 @@ export class AppComponent {
   }
 
   showUsers() {
-    console.log('here I am');
     let usersObservable = this._httpService.getUsers();
     usersObservable.subscribe((data: any) => {
       this.users = data;

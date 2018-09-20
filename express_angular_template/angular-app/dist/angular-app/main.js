@@ -81,7 +81,6 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.showUsers = function () {
         var _this = this;
-        console.log('here I am');
         var usersObservable = this._httpService.getUsers();
         usersObservable.subscribe(function (data) {
             _this.users = data;
