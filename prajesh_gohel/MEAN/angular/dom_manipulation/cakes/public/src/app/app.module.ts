@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { TasksService } from './tasks.service';
+import { FormsModule } from '@angular/forms'
+import { CakeService } from './cake.service';
 
 import { AppComponent } from './app.component';
 
@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [TasksService],
+  providers: [CakeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
