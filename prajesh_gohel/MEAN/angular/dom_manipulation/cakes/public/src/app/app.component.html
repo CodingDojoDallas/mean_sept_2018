@@ -1,0 +1,50 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1 class="mb-5">
+    {{ title }}!
+  </h1>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4">
+      <form (submit)="createCake()">
+        <h4>Submit a cake to be rated</h4>
+        <div class="form-group">
+          <label for="name">Baker Name:</label>
+          <input class="form-control" type="text" id="name" placeholder="Charlie Brown" name="newCake.baker_name" [(ngModel)]="newCake.baker_name">
+        </div>
+        <div class="form-group">
+          <label for="imgURL">Image URL:</label>
+          <input class="form-control" type="text" id="imgURL" name="newCake.imageURL" [(ngModel)]="newCake.imageURL">
+        </div>
+        <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+      </form>
+    </div>
+    <div class="col-8" style="overflow: scroll; height: 600px;">
+      <div class="row mb-3" *ngFor="let cake of cakes">
+        <div class="col-6">
+          <img style="width: 350px;" src="{{cake.imageURL}}" alt="Cake">
+        </div>
+        <div class="col-6">
+          <form (submit)="createRating()">
+            <p>{{this.rating | json}}</p>
+            <div class="form-group">
+              <label for="rated">Rating:</label>
+              <select class="form-control" id="rated" name="this.rating.stars" [(ngModel)]="this.rating.stars">
+                <option value="5">5 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="2">2 Stars</option>
+                <option value="1">1 Stars</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" rows="4" placeholder="Type your comment here" name="this.rating.comment" [(ngModel)]="this.rating.comment"></textarea>
+            </div>
+            <button class="btn btn-success" type="submit">Rate!</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

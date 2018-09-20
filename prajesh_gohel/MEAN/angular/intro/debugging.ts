@@ -87,8 +87,8 @@ var square = x => x * x;
 console.log(square(4));
 // the parameters needed to be in parenthesis
 var multiply = (x,y) => x * y;
-// changed the fat arrow to be a full function instead
-var math = function (x, y) {
+// Inserted curly brackets to properly define the fat arrow
+var math = (x, y) => {
     let sum = x + y;
     let product = x * y;
     let difference = Math.abs(x - y);
