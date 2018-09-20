@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpService } from './http.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NinjaService } from './ninja.service';
 
 import { AppComponent } from './app.component';
 
@@ -12,10 +11,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    NgbModule
+    HttpClientModule
   ],
-  providers: [HttpService],
+  providers: [NinjaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
